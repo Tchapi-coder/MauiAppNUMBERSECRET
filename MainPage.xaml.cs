@@ -1,25 +1,17 @@
-﻿namespace MauiApp1NUMBERSECRET
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿using Microsoft.Maui.Controls.Compatibility;
 
-        public MainPage()
+namespace MauiApp1NUMBERSECRET
+{
+    public partial class App : Application
+    {
+        public App()
         {
             InitializeComponent();
+
+            // Initialisation de la NavigationPage
+            MainPage = new NavigationPage(new MainPage());
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
     }
-
 }
