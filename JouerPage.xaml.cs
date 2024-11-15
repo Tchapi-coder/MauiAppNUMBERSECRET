@@ -6,4 +6,9 @@ public partial class JouerPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void DevinerBtn_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
