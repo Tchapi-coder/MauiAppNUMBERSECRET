@@ -2,16 +2,20 @@
 
 namespace MauiApp1NUMBERSECRET
 {
-    public partial class App : Application
+    public partial class MainPage : ContentPage
     {
-        public App()
+        public MainPage()
         {
             InitializeComponent();
 
-            // Initialisation de la NavigationPage
-            MainPage = new NavigationPage(new MainPage());
+        }
+        private void CounterBtn_Clicked(object sender, EventArgs e)
+        {
+
         }
 
-
     }
+
+
+    
 }
