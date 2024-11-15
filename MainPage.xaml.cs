@@ -9,9 +9,9 @@ namespace MauiApp1NUMBERSECRET
             InitializeComponent();
 
         }
-        private void CounterBtn_Clicked(object sender, EventArgs e)
+        private async void OnButtonClicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new JouerPage());
         }
 
     }

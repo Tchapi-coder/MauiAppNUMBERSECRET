@@ -30,7 +30,7 @@
             <Button
                  x:Name="CounterBtn"
                  Text="Are you ready to start?" 
-                    Clicked="CounterBtn_Clicked"
+                    Clicked="OnButtonClicked"
                     HorizontalOptions="Fill"
             />
             
