@@ -1,65 +1,45 @@
 namespace MauiApp1NUMBERSECRET;
 
 public partial class  JouerPage : ContentPage
-{	private readonly Random random = new();
-    readonly int nombreSecret;
-    
-    readonly int MaxNonIncluse;
-     int tentatives;
-    
+{
     public JouerPage()
-        
-	{
-        MinIncluse = 0;
-        MaxNonIncluse = 15;
-		InitializeComponent();
-		nombreSecret = random.Next(MinIncluse, MaxNonIncluse);
-		NombreLabel.Text = $"Le nombre secret est entre {MinIncluse} et {MaxNonIncluse}";
-	}
-    private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
     {
+        int nombreSecret = 7;
+        int MinIncluse = 1;
+        int MaxNonIncluse = 20;
+        Random random = new Random();
+        InitializeComponent();
+        nombreSecret = random.Next(MinIncluse, MaxNonIncluse);
+        NombreLabel.Text = $"The secret number is between {MinIncluse} et {MaxNonIncluse}";
+    }
+    private async void DevinerBtn_Clicked(object sender, EventArgs e)
+    {
+        int tentatives = 0;
+        int nombreSecret = 7;
+        int nombre;
+        bool estNombre = int.TryParse(NombreEntry.Text, out nombre);
+        tentatives++;
+        if (estNombre)
         {
-            stepperValueLabel.Text = $"Valeur actuelle : {e.NewValue}";
-        }
-    }
-    public int MinIncluse { get; private set; }
- 
-    private void DisplayAlert(string v1, string v2)
-    {
-        throw new NotImplementedException();
-    }
-    
-    private async void DevinerBtn_Clicked(object sender , EventArgs e)
-		
-	{
-        tentatives ++;
-		{
-            int nombre = int.Parse(NombreEntry.Text);
-            if (nombre > nombreSecret)
+            if (nombre == nombreSecret)
             {
-                await DisplayAlert("secret Number", "Secret Number", $"The number is great than {nombre}.try again, you will get it");
+                await DisplayAlert("Secret Number", $"Amazing, you have guest the secret number {nombre} in {tentatives} tentatives", "OK");
+                await Navigation.PopAsync();
             }
             else
             {
-                if (nombre < nombreSecret)
+                if (nombre > nombreSecret)
                 {
-                    await DisplayAlert("secret Number", "Secret Number", $"The number is less than {nombre}.try again, you will get it");
+                    await DisplayAlert("Secret Number", $"The number is greater than{nombre},keep trying", "OK");
+                    NombreEntry.Text = "";
                 }
                 else
                 {
-                   DisplayAlert("Amazing!","This is the right number! ");
-                   
-
+                    await DisplayAlert("Secret Number", $"The number is less than{nombre},keep trying", "OK");
+                    NombreEntry.Text = "";
                 }
-            }   NombreEntry.Text = "";
+            }
         }
+    }
 
-	}
-
-     
-}
-
-class stepperValueLabel
-{
-    internal static string Text;
 }

@@ -30,9 +30,7 @@
                   Clicked="DevinerBtn_Clicked"
                   HorizontalOptions="Center"/>
         <Label Text="Ajustez la valeur:" />
-            <Stepper Minimum="1" Maximum="100" ValueChanged="OnStepperValueChanged"/>
-            <Label x:Name="stepperValueLabel" />
-
+             
 
     </VerticalStackLayout>
 </ContentPage>
