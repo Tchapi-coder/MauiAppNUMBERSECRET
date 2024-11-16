@@ -3,13 +3,15 @@ namespace MauiApp1NUMBERSECRET;
 public partial class  JouerPage : ContentPage
 {	private readonly Random random = new();
     readonly int nombreSecret;
+    
     readonly int MaxNonIncluse;
      int tentatives;
     
     public JouerPage()
+        
 	{
         MinIncluse = 0;
-        MaxNonIncluse = 100;
+        MaxNonIncluse = 15;
 		InitializeComponent();
 		nombreSecret = random.Next(MinIncluse, MaxNonIncluse);
 		NombreLabel.Text = $"Le nombre secret est entre {MinIncluse} et {MaxNonIncluse}";
@@ -35,7 +37,7 @@ public partial class  JouerPage : ContentPage
             int nombre = int.Parse(NombreEntry.Text);
             if (nombre > nombreSecret)
             {
-                await DisplayAlert("secret Number", "Secret Number", $"The number is less than {nombre}.try again, you will get it");
+                await DisplayAlert("secret Number", "Secret Number", $"The number is great than {nombre}.try again, you will get it");
             }
             else
             {
