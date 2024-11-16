@@ -4,7 +4,8 @@ public partial class  JouerPage : ContentPage
 {	private readonly Random random = new();
     readonly int nombreSecret;
    readonly int MaxNonIncluse;
-    private readonly int tentatives;
+   int tentatives;
+    
 
     public JouerPage()
 	{
@@ -16,6 +17,7 @@ public partial class  JouerPage : ContentPage
 	}
 
     public int MinIncluse { get; private set; }
+    
 	 
 	private Task<string> NavigationPopAsync()
 	{
@@ -26,11 +28,12 @@ public partial class  JouerPage : ContentPage
         throw new NotImplementedException();
     }
     
-    public async void DevinerBtn_Clicked(int nombre)
+    private async void DevinerBtn_Clicked(object sender , EventArgs e)
 		
 	{
-        tentatives++;
+        tentatives ++;
 		{
+            int nombre = int.Parse(NombreEntry.Text);
             if (nombre == nombreSecret)
             {
                 await DisplayAlert("Secret Number", $"Bingo, you guessed the right number" + $"{nombre} dans {tentatives} tentatives", "Ok");

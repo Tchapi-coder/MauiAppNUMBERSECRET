@@ -27,7 +27,7 @@
         <Button
                  x:Name="DevinerBtn"
                  Text="Guess the Number" 
-                    Clicked="DevinerBtn_Clicked"
+                  Clicked="DevinerBtn_Clicked"
                     HorizontalOptions="Fill"/>
     </VerticalStackLayout>
 </ContentPage>
