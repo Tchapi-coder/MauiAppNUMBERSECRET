@@ -3,26 +3,20 @@ namespace MauiApp1NUMBERSECRET;
 public partial class  JouerPage : ContentPage
 {	private readonly Random random = new();
     readonly int nombreSecret;
-   readonly int MaxNonIncluse;
-   int tentatives;
+    readonly int MaxNonIncluse;
+     int tentatives;
     
-
     public JouerPage()
 	{
         MinIncluse = 0;
         MaxNonIncluse = 100;
 		InitializeComponent();
-		nombreSecret = random.Next(MinIncluse, MaxNonIncluse);
+        nombreSecret = random.Next(MinIncluse,MaxNonIncluse);
 		NombreLabel.Text = $"Le nombre secret est entre {MinIncluse} et {MaxNonIncluse}";
 	}
 
     public int MinIncluse { get; private set; }
-    
-	 
-	private Task<string> NavigationPopAsync()
-	{
-		throw new NotImplementedException();
-	}
+ 
     private void DisplayAlert(string v1, string v2)
     {
         throw new NotImplementedException();
@@ -34,28 +28,23 @@ public partial class  JouerPage : ContentPage
         tentatives ++;
 		{
             int nombre = int.Parse(NombreEntry.Text);
-            if (nombre == nombreSecret)
+            if (nombre > nombreSecret)
             {
-                await DisplayAlert("Secret Number", $"Bingo, you guessed the right number" + $"{nombre} dans {tentatives} tentatives", "Ok");
-                await NavigationPopAsync();
-
+                await DisplayAlert("secret Number", "Secret Number", $"The number is great than {nombre}.try again, you will get it");
             }
             else
             {
-                if (nombre > nombreSecret)
+                if (nombre < nombreSecret)
                 {
-                    DisplayAlert("Secret Number", $"The number is less than {nombre}.keep trying, you will get it");
-                    NombreEntry.Text = "";
-
-
+                    await DisplayAlert("secret Number", "Secret Number", $"The number is less than {nombre}.try again, you will get it");
                 }
                 else
                 {
-                    DisplayAlert("Secret Number", $"The number is greater than {nombre}. keep trying you will get it");
-                    NombreEntry.Text = "";
+                   DisplayAlert("Amazing!","This is the right number! ");
+                   
 
                 }
-            }
+            }   NombreEntry.Text = "";
         }
 
 	}
