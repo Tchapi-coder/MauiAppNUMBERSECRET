@@ -26,8 +26,13 @@
                 HorizontalOptions="Center"/>
         <Button
                  x:Name="DevinerBtn"
-                 Text="Guess the Number" 
+                  Text="Guess the Number" 
                   Clicked="DevinerBtn_Clicked"
-                    HorizontalOptions="Fill"/>
+                  HorizontalOptions="Center"/>
+        <Label Text="Ajustez la valeur:" />
+            <Stepper Minimum="1" Maximum="100" ValueChanged="OnStepperValueChanged"/>
+            <Label x:Name="stepperValueLabel" />
+
+
     </VerticalStackLayout>
 </ContentPage>

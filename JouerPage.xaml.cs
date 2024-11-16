@@ -11,10 +11,15 @@ public partial class  JouerPage : ContentPage
         MinIncluse = 0;
         MaxNonIncluse = 100;
 		InitializeComponent();
-        nombreSecret = random.Next(MinIncluse,MaxNonIncluse);
+		nombreSecret = random.Next(MinIncluse, MaxNonIncluse);
 		NombreLabel.Text = $"Le nombre secret est entre {MinIncluse} et {MaxNonIncluse}";
 	}
-
+    private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        {
+            stepperValueLabel.Text = $"Valeur actuelle : {e.NewValue}";
+        }
+    }
     public int MinIncluse { get; private set; }
  
     private void DisplayAlert(string v1, string v2)
@@ -30,7 +35,7 @@ public partial class  JouerPage : ContentPage
             int nombre = int.Parse(NombreEntry.Text);
             if (nombre > nombreSecret)
             {
-                await DisplayAlert("secret Number", "Secret Number", $"The number is great than {nombre}.try again, you will get it");
+                await DisplayAlert("secret Number", "Secret Number", $"The number is less than {nombre}.try again, you will get it");
             }
             else
             {
@@ -52,3 +57,7 @@ public partial class  JouerPage : ContentPage
      
 }
 
+class stepperValueLabel
+{
+    internal static string Text;
+}
