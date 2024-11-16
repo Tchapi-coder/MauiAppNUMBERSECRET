@@ -23,19 +23,19 @@ public partial class  JouerPage : ContentPage
         {
             if (nombre == nombreSecret)
             {
-                await DisplayAlert("Secret Number", $"Amazing, you have guest the secret number {nombre} in {tentatives} tentatives", "OK");
+                await DisplayAlert("Secret Number", $"Amazing, you have guessed the secret number {nombre} in {tentatives} tentatives", "OK");
                 await Navigation.PopAsync();
             }
             else
             {
                 if (nombre > nombreSecret)
                 {
-                    await DisplayAlert("Secret Number", $"The number is greater than{nombre},keep trying", "OK");
+                    await DisplayAlert("Secret Number", $"The number is less than{nombre},keep trying", "OK");
                     NombreEntry.Text = "";
                 }
                 else
                 {
-                    await DisplayAlert("Secret Number", $"The number is less than{nombre},keep trying", "OK");
+                    await DisplayAlert("Secret Number", $"The number is greater than{nombre},keep trying", "OK");
                     NombreEntry.Text = "";
                 }
             }
